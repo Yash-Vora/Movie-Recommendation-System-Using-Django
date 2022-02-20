@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie Recommendation System</title>
+        <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'movierecommenderapp/css/style.css' %}">
+    </head>
+    <body>
+        <center>
+            <div class="container">
+                <h1>Movie Recommendation System</h1>
+
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <label for="movie">Select Your Favorite Movie</label>
+                    <div class="select">
+                        <select name="movie">
+                            {% for i in movie_name %}
+                                <option>{{i}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button class="button button1">Recommend Movie</button>                     
+                </form>
+                {% if recommended_movies_name %}
+                    <table class="recommended_movies" style="width:100%">
+                        <br>
+                        <tr>
+                            <label>Recommended Movies For Selected Movie "{{selected_movie}}":</label>
+                        </tr><br><br>
+                        {% for mp1,mp2,mp3,mp4,mp5 in recommended_movies_poster %}
+                            <tr>
+                                <td><img src="{{mp1}}" alt="" width="200" height="250"></td>
+                                <td><img src="{{mp2}}" alt="" width="200" height="250"></td>
+                                <td><img src="{{mp3}}" alt="" width="200" height="250"></td>
+                                <td><img src="{{mp4}}" alt="" width="200" height="250"></td>
+                                <td><img src="{{mp5}}" alt="" width="200" height="250"></td>
+                            </tr>
+                        {% endfor %}
+                        {% for m1,m2,m3,m4,m5 in recommended_movies_name %}
+                            <tr>
+                                <td>{{m1}}</td>
+                                <td>{{m2}}</td>
+                                <td>{{m3}}</td>
+                                <td>{{m4}}</td>
+                                <td>{{m5}}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% endif %}
+            </div>
+        </center>
+    </body>
+</html>
