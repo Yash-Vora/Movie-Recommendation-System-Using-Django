@@ -17,7 +17,7 @@ Check out website deployed on heroku. Click on the following link to check out w
     </thead>
     <tbody>
         <tr>
-            <td><img src="static/movierecommenderapp/images/screenshot.png" alt="Home Page"></td>
+            <td><img src="screenshot.png" alt="Home Page"></td>
         </tr>
     </tbody>
 </table>
